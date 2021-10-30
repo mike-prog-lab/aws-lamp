@@ -8,6 +8,8 @@ resource "aws_instance" "lamp" {
     aws_security_group.lamp-ssh-sg.id,
   ]
 
+  key_name = aws_key_pair.dev_key.key_name
+
   tags = {
     Name = "lamp-${count.index}"
   }
