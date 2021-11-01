@@ -1,0 +1,10 @@
+---
+- yum:
+    name: python
+    state: present
+- yum:
+    name: python-pip
+    state: present
+- include: database.yml
+- include: app.yml
+- include: site.yml

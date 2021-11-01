@@ -1,0 +1,23 @@
+---
+- yum:
+    name: python-devel
+    state: present
+- yum:
+    name: mysql-devel
+    state: present
+- pip:
+    name: pymysql
+    state: present
+- yum:
+    name: gcc
+    state: present
+- mysql_user:
+    name: appuser
+    password: 94nfsUl7
+    priv: '*.*:ALL'
+    state: present
+    login_unix_socket: /var/lib/mysql/mysql.sock
+- mysql_db:
+    name: appdata
+    state: present
+    login_unix_socket: /var/lib/mysql/mysql.sock

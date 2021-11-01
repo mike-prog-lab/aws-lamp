@@ -1,0 +1,6 @@
+---
+- name: Restart all LAMP services
+  systemd:
+    state: restarted
+    name: "{{ item }}"
+  with_items: "{{ services }}"

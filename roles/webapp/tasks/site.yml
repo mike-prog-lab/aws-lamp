@@ -1,0 +1,9 @@
+---
+- yum:
+    name: python-mod_wsgi
+    state: present
+- name: Copy the apache configuration file
+  template:
+    src: "httpd/app.conf"
+    dest: /etc/httpd/conf.d/000-app.conf
+  notify: Restart all LAMP services
