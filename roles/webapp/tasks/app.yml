@@ -1,0 +1,24 @@
+---
+- yum:
+    name: git
+    state: present
+- git:
+    repo: "{{ app_repo }}"
+    dest: "{{ app_download_dest }}"
+    force: true
+- yum:
+    name: python-pip-wheel.noarch
+    state: present
+- pip:
+    name: pyyaml
+    state: forcereinstall
+    version: 3.11
+    extra_args: --no-cache-dir --ignore-installed
+- shell: "sed '/st_mysql_options options;/a unsigned int reconnect;' /usr/include/mysql/mysql.h -i.bkp"
+- pip:
+    requirements: "{{ app_download_dest }}/app/requirements.txt"
+#    extra_args: --no-build-isolation --ignore-installed PyYAML
+- copy:
+    src: "{{ app_download_dest }}/app/"
+    remote_src: true
+    dest: "{{ app_dest }}"

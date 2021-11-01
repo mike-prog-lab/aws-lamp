@@ -1,0 +1,4 @@
+---
+app_download_dest: /tmp/webapp
+app_dest: /var/www/webapp
+app_repo: https://toorroot@bitbucket.org/toorroot/ansible_demo.git
